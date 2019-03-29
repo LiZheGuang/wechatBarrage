@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "index/index",
+    "order/order",
+    "random/random"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "多骨鱼弹幕Demo",
+    "navigationBarTextStyle":"black"
+  }
+}

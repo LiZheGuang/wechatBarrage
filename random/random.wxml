@@ -1,0 +1,73 @@
+<view class='launchGird'>
+  
+  <view class='displayGroup'>
+      <view class='dmGroup' wx:for="{{ dmData }}" wx:key="{{ item.id }}"  style="top:{{ item.top }}%; animation: dmAnimation {{item.time}}s linear {{ index*3 }}s infinite; ">
+        <view class='dmItem'>
+          <view class='dm'>
+            <view class='avatarBox'>
+              <image src='{{ item.sex == 0 ? avatarBoy : avatarGirl }}' class='avatar' mode='aspectFit'></image>
+              <image src='{{ item.sex == 0 ? iconBoy : iconGirl }}' class='sex' mode='aspectFit'></image>
+            </view>
+            <text class='content'>{{ item.content }}</text>
+            <image src='{{ iconGood }}' class='icon good' mode='aspectFill'></image>
+            <text>{{ item.zanNumber }}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class='focus'>
+        <image src='{{ banner }}' class='img' mode='widthFix'></image>
+      </view>
+      <view class='shadowOverlay'></view>
+
+  </view>
+
+  <!-- 注释描述 -->
+  <view class='detailGroup'>
+    <view class='title'>无序弹幕(位置随机，循环滚动)</view>
+    <view class='tips'>实现方式：通过css3的animation动画属性由右到左实现，缺陷是<text class='cfRed'>移动速度过慢的情况下，会出现卡顿现象</text>。</view>
+    <view class='title small mt40'>wxml</view>
+    <view class='detail'>
+      <text decode='true'>&lt;view wx:for="{{symbolLeft}} dmData {{symbolRight}}" wx:key="{{symbolLeft}} item.id {{symbolRight}}"  style="top:</text>
+      <text decode='true' class='cfBlue'>{{symbolLeft}} item.top {{symbolRight}}</text>%; animation: dmAnimation 
+      <text decode='true' class='cfBlue'>{{symbolLeft}} item.time {{symbolRight}}</text>s linear 
+      <text decode='true' class='cfBlue'>{{symbolLeft}} index*3 {{symbolRight}}</text>s infinite;
+      <text decode='true'> "&gt;</text>
+    </view>
+    <view class='tips mt20'>
+      <view>
+        <text class='cfBlue'>{{symbolLeft}} item.top {{symbolRight}}</text>，控制弹幕显示位置。
+      </view>
+      <view class='mt10'>
+        <text class='cfBlue'>{{symbolLeft}} item.time {{symbolRight}}</text>，控制当前弹幕从右到左滚动一次所需的时间。
+      </view>
+      <view class='mt10'>
+        <text class='cfBlue'>{{symbolLeft}} index*3 {{symbolRight}}</text>，控制当前弹幕第N秒出现，取当前弹幕index值作为参数，实现延迟处理。
+      </view>
+    </view>
+
+    <view class='title small mt40'>wxss</view>
+    <view class='detail cfBlue'>
+      <text decode='true'>@keyframes dmAnimation{
+        &nbsp;&nbsp;&nbsp;&nbsp;from{ left: 100%; }
+        &nbsp;&nbsp;&nbsp;&nbsp;to{ left: -100%; }
+      &nbsp;&nbsp;}
+      </text>
+    </view>
+
+
+    <view class='title small mt40'>备注说明：</view>
+    <view class='detail'>
+      <view>
+      当前demo，仅仅是实现一种快速简洁的固定循环滚动弹幕。
+      </view>
+      <view class='mt10'>
+      常见业务场景：资讯类栏目、社交属性图文、推广类广告位等。
+      </view>
+    </view>
+
+    <view class='copyRight'>{{ copyRight }}</view>
+
+  </view>
+
+</view>

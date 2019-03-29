@@ -1,0 +1,131 @@
+<view class='launchGird'>
+
+
+  <view class='displayGroup'>
+
+      <!-- top -->
+      <view class='dmGroup top' style="animation: dmAnimation2 35s linear infinite; ">
+        <view class='dmItem' wx:for="{{ dmData }}" wx:if="{{ index < 6 }}" wx:key="{{ item.id }}">
+          <view class='dm'>
+            <view class='avatarBox'>
+              <image src='{{ item.sex == 0 ? avatarBoy : avatarGirl }}' class='avatar' mode='aspectFit'></image>
+              <image src='{{ item.sex == 0 ? iconBoy : iconGirl }}' class='sex' mode='aspectFit'></image>
+            </view>
+            <text class='content'>{{ item.content }}</text>
+            <image src='{{ iconGood }}' class='icon good' mode='aspectFill'></image>
+            <text>{{ item.zanNumber }}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- mid -->
+      <view class='dmGroup mid'  style="animation: dmAnimation2 30s linear 1s infinite; ">
+        <view class='dmItem' wx:for="{{ dmData }}" wx:if="{{ index > 5 && index < 10 }}" wx:key="{{ item.id }}">
+          <view class='dm'>
+            <view class='avatarBox'>
+              <image src='{{ item.sex == 0 ? avatarBoy : avatarGirl }}' class='avatar' mode='aspectFit'></image>
+              <image src='{{ item.sex == 0 ? iconBoy : iconGirl }}' class='sex' mode='aspectFit'></image>
+            </view>
+            <text class='content'>{{ item.content }}</text>
+            <image src='{{ iconGood }}' class='icon good' mode='aspectFill'></image>
+            <text>{{ item.zanNumber }}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- btm -->
+      <view class='dmGroup btm'  style="animation: dmAnimation2 45s linear infinite; ">
+        <view class='dmItem' wx:for="{{ dmData }}" wx:if="{{ index > 9 }}" wx:key="{{ item.id }}">
+          <view class='dm'>
+            <view class='avatarBox'>
+              <image src='{{ item.sex == 0 ? avatarBoy : avatarGirl }}' class='avatar' mode='aspectFit'></image>
+              <image src='{{ item.sex == 0 ? iconBoy : iconGirl }}' class='sex' mode='aspectFit'></image>
+            </view>
+            <text class='content'>{{ item.content }}</text>
+            <image src='{{ iconGood }}' class='icon good' mode='aspectFill'></image>
+            <text>{{ item.zanNumber }}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class='focus'>
+        <image src='{{ banner }}' class='img' mode='widthFix'></image>
+      </view>
+      <view class='shadowOverlay'></view>
+    
+  </view>
+
+
+
+  <!-- 注释描述 -->
+  <view class='detailGroup'>
+    <view class='title'>有序弹幕(位置固定，循环滚动)</view>
+    <view class='tips'>实现方式：通过css3的animation的<text class='cfBlue'>translateX</text>属性实现，优点是<text class='cfBlue'>通常不会出现卡顿现象</text>，缺陷是<text class='cfRed'>需要把数据(部分或全部)放进单个轨道容器内，使该轨道(包含多条数据，非单个数据)整个进行移动，而非逐条移动; 以及轨道滚动完成后有一定的空白区域(待完善).</text>。</view>
+    <view class='title small mt40'>wxml(部分)</view>
+    <view class='detail'>
+        <view>
+          <text decode='true'>&lt;view class='dmGroup </text>
+          <text decode='true' class='cfBlue'>btm</text>
+          <text decode='true'>' </text>
+          <text decode='true' class='cfBlue'>style="animation: dmAnimation2 45s linear infinite; "</text>
+          <text decode='true'>&gt;</text>
+        </view>
+        <view>
+        <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&lt;view class='dmItem' wx:for="{{symbolLeft}} dmData {{symbolRight}}" </text>
+        <text decode='true' class='cfBlue'>wx:if="{{symbolLeft}} index &lt; 9 {{symbolRight}}"</text>
+        <text decode='true'> wx:key="{{symbolLeft}} item.id {{symbolRight}}"&gt;</text>
+        </view>
+        <view>
+          <text decode='true'>&nbsp;</text>
+        </view>
+        <view>
+          <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;// todo something.</text>
+        </view>
+        <view>
+          <text decode='true'>&nbsp;</text>
+        </view>
+        <view>
+        <text decode='true'>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/view&gt;</text>
+        </view>
+        <view>
+          <text decode='true'>&lt;/view&gt;</text>
+        </view>
+    </view>
+    <view class='tips mt20'>
+      <view>
+        <text class='cfBlue'>style="animation: dmAnimation2 45s linear infinite; "</text>，控制该轨道弹幕的动画方式(45s时间完成一次移动)。
+      </view>
+      <view class='mt10'>
+        <text decode='true' class='cfBlue'>wx:if="{{symbolLeft}} index &lt; 9 {{symbolRight}}"</text>，控制当前轨道内弹幕数量，当前取弹幕数组里的前9条数据。
+      </view>
+      <view class='mt10'>
+        <text class='cfBlue'>class='dmGroup btm'</text>，通过css控制当前轨道弹幕的显示位置。
+      </view>
+    </view>
+
+    <view class='title small mt40'>wxss</view>
+    <view class='detail cfBlue'>
+      <text decode='true'>@keyframes dmAnimation2{
+      &nbsp;&nbsp;&nbsp;&nbsp;0% { transform: translateX(0); } 
+      &nbsp;&nbsp;&nbsp;&nbsp;100% { transform: translateX(-130%); } 
+      &nbsp;&nbsp;}
+      </text>
+    </view>
+
+
+    <view class='title small mt40'>备注说明：</view>
+    <view class='detail'>
+      <view>
+      当前是快速实现固定轨道滚动弹幕(循环)的demo。
+      </view>
+      <view class='mt10'>
+      常见业务场景：资讯类栏目、社交属性图文、推广类广告位等。
+      </view>
+    </view>
+
+    <view class='copyRight'>{{ copyRight }}</view>
+      
+  </view>
+
+
+</view>

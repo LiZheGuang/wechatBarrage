@@ -1,0 +1,15 @@
+<!--pages/launchpad/launchpad.wxml-->
+<view class='launchGird'>
+
+    <view class='btnGroup mb10'>
+      <view class='item'>
+        <navigator url="/random/random" class='btn blue' hover-class="none">无序弹幕(位置随机)</navigator>
+      </view>
+    </view>
+    <view class='btnGroup'>
+      <view class='item'>
+        <navigator url="/order/order" class='btn orange' hover-class="none">有序弹幕(位置固定)</navigator>
+      </view>
+    </view>
+
+</view>
